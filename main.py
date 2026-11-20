@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 # ==========================================
 # 1. SYSTEM CONFIGURATION
 # ==========================================
-VIDEO_PATH = "C:\\Users\\ASUS\\Desktop\\crowd1.mp4"  # Ensure this path is correct crowd1
+VIDEO_PATH = "video path"  # Ensure this path is correct crowd1
 MODEL_NAME = "yolo11n.pt"
 CONFIDENCE_LIMIT = 0.10  # Optimal for catching dense crowd targets
 
@@ -170,12 +170,12 @@ class AdvancedVisionSystem:
         # Draw a horizontal crossing line matching the new flow direction
         cv2.line(frame, (0, line_y), (w, line_y), (255, 0, 255), 3)
         if current_crowd >= CROWD_THRESHOLD:
-            # حالة الخطر (إنذار أحمر مشتعل)
-            hud_color = (0, 0, 200)      # لون أحمر داكن للوحة الخلفية
+            # Emergency Situation (Red Alert)
+            hud_color = (0, 0, 200)      # deep red
             text_status = "CRITICAL CROWD WARNING!"
-            status_color = (0, 0, 255)   # نص أحمر فاقع للنظام
+            status_color = (0, 0, 255)   # Text in bright red for the system
         else:
-            # الحالة الطبيعية (لوحة رمادية زجاجية أنيقة)
+            # Normal State (Elegant Gray Glass Panel)
             hud_color = (20, 20, 20)     
             text_status = "QUEUE ANALYTICS SYSTEM"
             status_color = (0, 255, 255)
@@ -210,9 +210,6 @@ if __name__ == "__main__":
         if frame is None:
             continue
 
-        # -----------------------------------------------------------------
-        # التعديل هنا: قمنا بإعادة تغيير أبعاد الإطار برمجياً لملائمة حجم الشاشة
-        # الأبعاد (1024, 768) ستجعل الفيديو منضبطاً تماماً وسترفع سرعة الـ FPS
         # -----------------------------------------------------------------
         frame = cv2.resize(frame, (1024, 768))
         # -----------------------------------------------------------------
